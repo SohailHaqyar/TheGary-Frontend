@@ -50,7 +50,7 @@ export const Signup = () => {
   return (
     <div className="w-screen h-screen flex items-center justify-center flex-col">
       <GoogleLogin
-        clientId="63096940458-pttpa4kr77dhpsj1vffgtrs580vd7gq1.apps.googleusercontent.com"
+        clientId="63096940458-fvomofr8jbr1uiphkcdv0gcqpgib5421.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={handleSuccess}
         onFailure={handleFailure}
