@@ -1,11 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
-import { CurrentUser } from "../context/CurrentUserContext";
+import { useAuth } from "../context/AuthContext";
 import {
   useAllUsersQuery,
   useGetUserConversationsQuery,
-  User,
 } from "../generated/graphql";
 import { ChatBox } from "./ChatBox";
 import { ChatUserCard } from "./ChatUserCard";
@@ -14,7 +11,9 @@ import { UserContactCard } from "./UserContactCard";
 export const ChatsPages = () => {
   const { data: users } = useAllUsersQuery();
   const { data, loading } = useGetUserConversationsQuery();
-  const { user } = useContext(CurrentUser);
+  const {
+    currentUser: { user },
+  } = useAuth();
 
   return (
     <div className="messenger">

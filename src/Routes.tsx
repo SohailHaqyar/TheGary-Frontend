@@ -3,7 +3,6 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import { FollowingsPage } from "./components/FollowingsPage";
 import { Home } from "./components/Home";
 import { OauthLoading } from "./components/OauthLoading";
-import { PostPage } from "./components/PostPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { TrendingPage } from "./components/TrendingPage";
 import { UserDetails } from "./components/UserDetails";
@@ -27,8 +26,6 @@ export const Routes = () => {
           component={TrendingPage}
         />
         <PrivateRoute exact path="/users" component={UsersPage} />
-        <PrivateRoute exact path="/post/:id" component={PostPage} />
-
         <PrivateRoute
           exact
           path="/user/:id"

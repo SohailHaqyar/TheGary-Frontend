@@ -13,24 +13,22 @@ interface Props {
   refetch: Function;
 }
 
-let today = new Date();
-
-export const checkPostDate = () => {
-  const nextPostDate = new Date(
-    JSON.parse(localStorage.getItem("nextPostDate")!)
-  ).getTime();
-  if (!nextPostDate) {
-    localStorage.setItem(
-      "nextPostDate",
-      JSON.stringify(new Date().setDate(today.getDate() + 1))
-    );
-  }
-  if (today.getTime() < nextPostDate) {
-    return true;
-  } else {
-    return false;
-  }
-};
+// export const checkPostDate = () => {
+//   const nextPostDate = new Date(
+//     JSON.parse(localStorage.getItem("nextPostDate")!)
+//   ).getTime();
+//   if (!nextPostDate) {
+//     localStorage.setItem(
+//       "nextPostDate",
+//       JSON.stringify(new Date().setDate(today.getDate() + 1))
+//     );
+//   }
+//   if (today.getTime() < nextPostDate) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
 export const CreatePostForm: React.FC<Props> = ({ refetch }) => {
   const [createPostMutation, { error }] = useCreatePostMutation();
 
@@ -104,7 +102,7 @@ export const CreatePostForm: React.FC<Props> = ({ refetch }) => {
           )}
         </div>
         <div className="flex items-center  justify-center">
-          <MainButton type="submit" full disabled={checkPostDate()}>
+          <MainButton type="submit" full>
             Post
           </MainButton>
         </div>

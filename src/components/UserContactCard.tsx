@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext } from "react";
-import { CurrentUser } from "../context/CurrentUserContext";
+import { useAuth } from "../context/AuthContext";
 import {
   useCreateConversationMutation,
   User,
@@ -10,7 +9,9 @@ interface Props {
   user: Partial<User>;
 }
 export const UserContactCard: React.FC<Props> = ({ user }) => {
-  const { user: AuthUser } = useContext(CurrentUser);
+  const {
+    currentUser: { user: AuthUser },
+  } = useAuth();
   const [createConvo, { error }] = useCreateConversationMutation();
 
   const createConversation = async () => {

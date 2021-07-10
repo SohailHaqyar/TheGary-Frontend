@@ -9,7 +9,7 @@ const App = () => {
     if (localStorage.theme === "dark") {
       document.documentElement.classList.add("dark");
     }
-  }, [localStorage.theme]);
+  }, []);
   return (
     <AuthProvider>
       <PostsProvider>

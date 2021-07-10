@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { toggleTheme } from "../helpers/toggleTheme";
@@ -9,7 +7,6 @@ import { isTokenValid } from "../isTokenExpired";
 import { Avatar } from "./Avatar";
 import { MainButton } from "./Buttons/MainButton";
 import { SideNav } from "./SideNavigation/SideNavigation";
-import { Timer } from "./Timer";
 
 const containerVariants = {
   hidden: {
@@ -28,54 +25,53 @@ const containerVariants = {
     },
   },
 };
-const today = new Date();
 export const Container: React.FC = ({ children }) => {
   const {
-    currentUser: { user, isAuth },
+    currentUser: { user },
   } = useAuth();
   const history = useHistory();
 
-  const [timerHours, setTimerHours] = useState<any>("00");
-  const [timerMinutes, setTimerMinutes] = useState<any>("00");
-  const [timerSeconds, setTimerSeconds] = useState<any>("00");
+  // const [timerHours, setTimerHours] = useState<any>("00");
+  // const [timerMinutes, setTimerMinutes] = useState<any>("00");
+  // const [timerSeconds, setTimerSeconds] = useState<any>("00");
 
-  let interval: any = useRef();
+  // let interval: any = useRef();
 
-  const startTimer = () => {
-    const countDownDate = new Date(
-      JSON.parse(localStorage.getItem("nextPostDate")!)
-    ).getTime();
+  // const startTimer = () => {
+  //   const countDownDate = new Date(
+  //     JSON.parse(localStorage.getItem("nextPostDate")!)
+  //   ).getTime();
 
-    interval = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = countDownDate - now;
+  //   interval = setInterval(() => {
+  //     const now = new Date().getTime();
+  //     const difference = countDownDate - now;
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor(
-        (difference % (1000 * 60 * 60)) / (1000 * 60)
-      );
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  //     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  //     const hours = Math.floor(
+  //       (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  //     );
+  //     const minutes = Math.floor(
+  //       (difference % (1000 * 60 * 60)) / (1000 * 60)
+  //     );
+  //     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-      if (difference < 0) {
-        // stop timer
-        clearInterval(interval.current);
-      } else {
-        setTimerHours(hours);
-        setTimerMinutes(minutes);
-        setTimerSeconds(seconds);
-      }
-    }, 1000);
-  };
+  //     if (difference < 0) {
+  //       // stop timer
+  //       clearInterval(interval.current);
+  //     } else {
+  //       setTimerHours(hours);
+  //       setTimerMinutes(minutes);
+  //       setTimerSeconds(seconds);
+  //     }
+  //   }, 1000);
+  // };
 
-  useEffect(() => {
-    startTimer();
-    return () => {
-      clearInterval();
-    };
-  });
+  // useEffect(() => {
+  //   startTimer();
+  //   return () => {
+  //     clearInterval();
+  //   };
+  // });
   return (
     <div className="min-h-screen">
       <div className="py-10">
@@ -128,7 +124,7 @@ export const Container: React.FC = ({ children }) => {
                 </div>
               </div>
 
-              {timerHours !== "00" && (
+              {/* {timerHours !== "00" && (
                 <div className="bg-white w-full mt-2 p-4 dark:bg-dracula-700 dark:text-white">
                   <h1 className="text-center mb-4 text-lg">
                     You can post again in
@@ -137,7 +133,7 @@ export const Container: React.FC = ({ children }) => {
                   <Timer type="Minutes" value={timerMinutes} />
                   <Timer type="Seconds" value={timerSeconds} />
                 </div>
-              )}
+              )} */}
             </div>
           </aside>
         </div>

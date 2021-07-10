@@ -1,10 +1,6 @@
-import React, { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { CurrentUser } from "../context/CurrentUserContext";
 import {
   useFollowersQuery,
   useFollowingsQuery,
@@ -32,15 +28,11 @@ export const UserDetails = () => {
     variables: { id: params.id },
   });
 
-  const {
-    data: followings,
-    refetch: followingsRefetch,
-    loading: followingsLoading,
-  } = useFollowingsQuery({
+  const { data: followings } = useFollowingsQuery({
     variables: { id: params.id },
   });
   const {
-    currentUser: { user, isAuth },
+    currentUser: { user },
   } = useAuth();
 
   let isProfilePage = params.id === user?.id;

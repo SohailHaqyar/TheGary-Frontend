@@ -1,6 +1,5 @@
 import { Redirect, Route } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import { isTokenValid } from "../isTokenExpired";
 
 export const PrivateRoute = ({
   component: Component,

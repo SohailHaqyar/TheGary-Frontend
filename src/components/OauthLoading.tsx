@@ -32,7 +32,7 @@ export const OauthLoading = () => {
         alert(e.message);
       }
     })();
-  }, []);
+  }, [code, history, setCurrentUser]);
   return (
     <div className="w-screen h-screen grid place-items-center">
       <h2 className="text-4xl">Redirecting Please Wait ...</h2>

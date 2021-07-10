@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { useFollowingsQuery } from "../generated/graphql";
 import { Container } from "./Container";

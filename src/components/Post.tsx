@@ -1,20 +1,17 @@
-import { ThumbUpIcon, ChatAltIcon } from "@heroicons/react/solid";
-import React, { useContext, useState } from "react";
+import moment from "moment";
+import React, { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   Post as IPost,
   useAddCommentMutation,
   useLikePostMutation,
 } from "../generated/graphql";
-import moment from "moment";
-import { Link } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { Comment } from "./Comment";
-import { CurrentUser } from "../context/CurrentUserContext";
-import { formatDate } from "../helpers/formatDate";
 import { Avatar } from "./Avatar";
-import { useAuth } from "../context/AuthContext";
-import { className, TextInput } from "./TextInput";
 import { IconButton } from "./Buttons/IconButton";
+import { Comment } from "./Comment";
+import { className } from "./TextInput";
 interface PostProps {
   item: IPost;
 }

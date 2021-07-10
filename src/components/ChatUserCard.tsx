@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { CurrentUser } from "../context/CurrentUserContext";
+import { useAuth } from "../context/AuthContext";
 import { Conversation, User } from "../generated/graphql";
 
 interface Props {
@@ -9,7 +9,9 @@ interface Props {
 }
 export const ChatUserCard: React.FC<Props> = ({ conversation }) => {
   const { push } = useHistory();
-  const { user } = useContext(CurrentUser);
+  const {
+    currentUser: { user },
+  } = useAuth();
 
   const getUser = () => {
     let finalUser;
