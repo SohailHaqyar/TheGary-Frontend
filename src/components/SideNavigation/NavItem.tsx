@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { NavIcon, NavigationIcons } from "./NavIcon";
 import { useAuth } from "../../context/AuthContext";
 interface Props {
@@ -14,6 +14,8 @@ export const NavItem: React.FC<Props> = ({ url, icon, title }) => {
   };
   const { setCurrentUser } = useAuth();
   let current = window.location.href.slice(21, 30);
+  const location = useLocation();
+  console.log(location);
   const history = useHistory();
   const handleClick = () => {
     if (url !== "/logout") {
