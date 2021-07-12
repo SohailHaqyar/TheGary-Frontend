@@ -13,9 +13,9 @@ export const NavItem: React.FC<Props> = ({ url, icon, title }) => {
     return classes.filter(Boolean).join(" ");
   };
   const { setCurrentUser } = useAuth();
-  let current = window.location.href.slice(21, 30);
   const location = useLocation();
-  console.log(location);
+  let current = location.pathname;
+
   const history = useHistory();
   const handleClick = () => {
     if (url !== "/logout") {
