@@ -31,7 +31,7 @@ export const Tabs = ({ posts, followers, followings, user }: any) => {
     }
   };
   return (
-    <div className="hidden sm:block">
+    <div className="">
       <nav
         className="relative z-0 rounded-lg mb-2 flex divide-x divide-gray-200 dark:divide-gray-900"
         aria-label="Tabs"

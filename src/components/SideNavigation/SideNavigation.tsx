@@ -1,9 +1,8 @@
-import React from "react";
 import { NavItem } from "./NavItem";
 
 export const SideNav = () => {
   return (
-    <div className="hidden lg:block lg:col-span-4 xl:col-span-2">
+    <div className="hidden lg:block lg:col-span-2  xl:col-span-2">
       <nav
         aria-label="Sidebar"
         className="sticky top-4 divide-y divide-gray-300"

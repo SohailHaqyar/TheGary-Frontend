@@ -5,6 +5,21 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+:root {
+  /* --main-color: #df7c03; */
+  --main-color: #054dac;
+  --blue: #0000ff;
+  --blue-dark: #0e1108;
+  --orange: #ffa500;
+  --green-yellow: #cddc39;
+  --pink-light: #03cf70;
+  --cyan-light: #eeff00;
+  --white: #ffffff;
+  --white-alpha-40: rgba(255, 255, 255, 0.4);
+  --white-alpha-25: rgba(255, 255, 255, 0.25);
+  --backdrop-filter-blur: blur(5px);
+}
+
 body {
   font-family: "Overpass Mono", monospace;
   min-height: 100vh;

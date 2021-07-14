@@ -104,6 +104,7 @@ export type Mutation = {
   register: User;
   continueWithGoogle: LoginResponse;
   followUser: FollowRes;
+  continueAsGuest: LoginResponse;
   createPost: Post;
   updatePost: Post;
   deletePost: DeleteResponse;
@@ -348,6 +349,17 @@ export type FollowUserMutation = (
         & Pick<User, 'id'>
       ) }
     )> }
+  ) }
+);
+
+export type GuestLoginMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GuestLoginMutation = (
+  { __typename?: 'Mutation' }
+  & { continueAsGuest: (
+    { __typename?: 'LoginResponse' }
+    & Pick<LoginResponse, 'access_token'>
   ) }
 );
 
@@ -755,6 +767,38 @@ export function useFollowUserMutation(baseOptions?: Apollo.MutationHookOptions<F
 export type FollowUserMutationHookResult = ReturnType<typeof useFollowUserMutation>;
 export type FollowUserMutationResult = Apollo.MutationResult<FollowUserMutation>;
 export type FollowUserMutationOptions = Apollo.BaseMutationOptions<FollowUserMutation, FollowUserMutationVariables>;
+export const GuestLoginDocument = gql`
+    mutation GuestLogin {
+  continueAsGuest {
+    access_token
+  }
+}
+    `;
+export type GuestLoginMutationFn = Apollo.MutationFunction<GuestLoginMutation, GuestLoginMutationVariables>;
+
+/**
+ * __useGuestLoginMutation__
+ *
+ * To run a mutation, you first call `useGuestLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useGuestLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [guestLoginMutation, { data, loading, error }] = useGuestLoginMutation({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGuestLoginMutation(baseOptions?: Apollo.MutationHookOptions<GuestLoginMutation, GuestLoginMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<GuestLoginMutation, GuestLoginMutationVariables>(GuestLoginDocument, options);
+      }
+export type GuestLoginMutationHookResult = ReturnType<typeof useGuestLoginMutation>;
+export type GuestLoginMutationResult = Apollo.MutationResult<GuestLoginMutation>;
+export type GuestLoginMutationOptions = Apollo.BaseMutationOptions<GuestLoginMutation, GuestLoginMutationVariables>;
 export const LikePostDocument = gql`
     mutation LikePost($postId: String!) {
   likePost(postId: $postId) {

@@ -8,7 +8,7 @@ export const UsersPage = () => {
   if (error) return <div>Loading...</div>;
   return (
     <Container>
-      <ul className="">
+      <ul className="space-y-1 min-h-screen mb-20 lg:mb-0">
         {data?.users.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}

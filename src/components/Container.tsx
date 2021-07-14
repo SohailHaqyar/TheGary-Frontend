@@ -6,6 +6,7 @@ import { toggleTheme } from "../helpers/toggleTheme";
 import { isTokenValid } from "../isTokenExpired";
 import { Avatar } from "./Avatar";
 import { MainButton } from "./Buttons/MainButton";
+import { MyPopover } from "./MenuBar/MobilePopover";
 import { SideNav } from "./SideNavigation/SideNavigation";
 
 const containerVariants = {
@@ -77,8 +78,9 @@ export const Container: React.FC = ({ children }) => {
       <div className="py-10">
         <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
           <SideNav />
+          <MyPopover />
           <motion.main
-            className="lg:col-span-10 xl:col-span-6"
+            className="lg:col-span-7 xl:col-span-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -87,10 +89,7 @@ export const Container: React.FC = ({ children }) => {
             {children}
           </motion.main>
 
-          <aside
-            className="lg:col-span-4 xl:col-span-3"
-            style={{ display: isTokenValid() ? "block" : "none" }}
-          >
+          <aside className="hidden lg:block lg:col-span-3 xl:col-span-3">
             <div className="sticky top-4">
               <div className="bg-white w-full flex flex-col items-center py-4 dark:bg-dracula-700 dark:text-white">
                 <Avatar
@@ -102,7 +101,7 @@ export const Container: React.FC = ({ children }) => {
                   rounded
                   size="lg"
                 />
-                <h2 className="mt-4 text-xl  font-light capitalize">
+                <h2 className="mt-4 text-xl  font-light capitalize text-center">
                   {user?.username}
                 </h2>
 

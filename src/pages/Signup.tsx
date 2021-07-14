@@ -2,16 +2,46 @@ import axios from "axios";
 import { GoogleLogin } from "react-google-login";
 import { useHistory } from "react-router";
 import { Redirect } from "react-router-dom";
+import { createJsxJsxClosingFragment } from "typescript";
 import { useAuth } from "../context/AuthContext";
-import { useContinueWithGoogleMutation } from "../generated/graphql";
+import {
+  useContinueWithGoogleMutation,
+  useGuestLoginMutation,
+} from "../generated/graphql";
 import GithubLogo from "../github-logo.png";
 import GoogleLogo from "../google-logo.png";
 const URL = `https://the-gary.herokuapp.com`;
 
 export const Signup = () => {
   const [login] = useContinueWithGoogleMutation();
+  const [loginAsGuest] = useGuestLoginMutation();
   const history = useHistory();
   const { currentUser, setCurrentUser } = useAuth();
+  const guestLogin = async () => {
+    try {
+      const result = await loginAsGuest();
+      if (result.data?.continueAsGuest.access_token) {
+        console.log(result);
+        localStorage.setItem(
+          "token",
+          result.data?.continueAsGuest.access_token!
+        );
+
+        const user = await axios.get(`${URL}/users/me`, {
+          headers: {
+            Authorization: `Bearer ${result.data?.continueAsGuest
+              .access_token!}`,
+          },
+        });
+
+        setCurrentUser({ user: user.data, isAuth: true });
+
+        history.push("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   const handleSuccess = async (response: any) => {
     try {
       const result = await login({
@@ -80,6 +110,13 @@ export const Signup = () => {
       >
         <img src={GithubLogo} alt="" className="w-16 h-16 mr-2" />
         Continue with Github
+      </button>
+
+      <button
+        className="bg-white mt-4 p-4 flex items-center text-lg rounded-2xl transform transition-transform ease-in-out hover:scale-110 hover:shadow-lg uppercase"
+        onClick={guestLogin}
+      >
+        Continue as Guest
       </button>
     </div>
   );

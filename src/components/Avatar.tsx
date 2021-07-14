@@ -28,7 +28,7 @@ export const Avatar: React.FC<Props> = ({
         size === "xs"
           ? "h-10 w-10"
           : size === "sm"
-          ? "w-20 h-20"
+          ? "w-16 h-16"
           : size === "md"
           ? "w-24 h-24"
           : size === "lg"

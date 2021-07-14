@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { NavIcon, NavigationIcons } from "./NavIcon";
 import { useAuth } from "../../context/AuthContext";
+import { classNames } from "./classNames";
 interface Props {
   url: string;
   title: string;
@@ -9,9 +10,6 @@ interface Props {
 }
 
 export const NavItem: React.FC<Props> = ({ url, icon, title }) => {
-  const classNames = (...classes: any) => {
-    return classes.filter(Boolean).join(" ");
-  };
   const { setCurrentUser } = useAuth();
   const location = useLocation();
   let current = location.pathname;

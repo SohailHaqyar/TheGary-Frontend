@@ -907,6 +907,22 @@
             "deprecationReason": null
           },
           {
+            "name": "continueAsGuest",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "LoginResponse",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "createPost",
             "description": null,
             "args": [
