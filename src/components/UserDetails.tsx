@@ -60,7 +60,7 @@ export const UserDetails = () => {
   };
   return (
     <Container>
-      <div className="w-full min-h-screen">
+      <div className="w-full min-h-screen lg:mb-0 mb-12">
         <div className="bg-white rounded px-8 pt-6 pb-8 mb-4 dark:bg-dracula-700">
           <Avatar src={data?.user.imageUrl!} rounded size="xl" />
           <h2 className="mt-2 text-lg capitalize dark:text-white">

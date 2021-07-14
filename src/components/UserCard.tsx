@@ -21,7 +21,7 @@ export const UserCard: React.FC<Props> = ({ user }) => {
         />
       </div>
       <div className="px-8 pt-4 pb-6 flex-grow">
-        <h2 className="mt-2 text-xl  font-light capitalize">
+        <h2 className="mt-2 text-base md:text-xl  font-light capitalize truncate">
           {user.username}
         </h2>
         <h4 className="my-1 text-gray-600 text-sm dark:text-gray-200">
