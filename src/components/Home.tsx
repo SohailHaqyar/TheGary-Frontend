@@ -1,12 +1,13 @@
-import { useAllPostsQuery } from "../generated/graphql";
-import { Container } from "./Container";
-import { CreatePostForm } from "./CreatePostForm";
-import PostFeed from "./PostFeed";
-import { SkeletonPost } from "./Skeletons/SkeletonPost";
+import { useState } from "react"
+import { useAllPostsQuery } from "../generated/graphql"
+import { Container } from "./Container"
+import { CreatePostForm } from "./CreatePostForm"
+import PostFeed from "./PostFeed"
+import { SkeletonPost } from "./Skeletons/SkeletonPost"
 
 export const Home = () => {
-  const { data, loading, refetch, error } = useAllPostsQuery();
-  if (error) console.error(error);
+  const { data, loading, refetch, error } = useAllPostsQuery()
+  if (error) console.error(error)
   return (
     <Container>
       <CreatePostForm refetch={refetch} />
@@ -16,5 +17,5 @@ export const Home = () => {
         <PostFeed data={data?.findAll as any} />
       )}
     </Container>
-  );
-};
+  )
+}
